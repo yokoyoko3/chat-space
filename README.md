@@ -11,11 +11,11 @@
 ## groupテーブル
 |Column|Type|Options|
 |------|----|-------|
-|title|text|null: false|
+|title|string|null: false|
 |menber|string|null: false|
 ### Association
 - has_many :users  through:  :groups_users
-
+- has_many :posts
 
 ## groups_usersテーブル
 
@@ -26,13 +26,14 @@
 
 ### Association
 - belongs_to :group
-- belongs_to :user
+c
 
 ## postsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|title|text|null: false|
 |text|text|null: false|
 |user_id|integer|null: false, foreign_key: true|
+|image|text||
 ### Association
 - belongs_to :user
+- belongs_to :groups

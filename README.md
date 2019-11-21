@@ -26,7 +26,7 @@
 
 ### Association
 - belongs_to :group
-c
+
 
 ## postsテーブル
 |Column|Type|Options|

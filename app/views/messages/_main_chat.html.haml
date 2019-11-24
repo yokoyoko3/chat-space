@@ -21,8 +21,9 @@
         this is a first message
   .form
     .input-box
-      %input.input-box__text{:placeholder => "type a message",:class => "input-box__text",:type => "text",:name => "message[content]",:id => "message_content"}
-      %label{class: "input-box__image"}
+      %input.input-box__text{placeholder: 'type a message',class: 'input-box__text',type: 'text',name: 'message[content]',id: 'message_content'}
+      %label{class: 'input-box__image'}
         = icon('fas', 'image')
         %input{type: "file",class: "file"}    
-      %input.submit-btn{:type => "submit",:name => "commit",:value => "Send",:data-disable-with => "Send"}
+      %input.submit-btn{type: "submit",name: "commit",value: "Send",data: "Send"}
+

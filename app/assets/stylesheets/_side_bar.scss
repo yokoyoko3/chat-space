@@ -28,12 +28,19 @@
       overflow: scroll;
       width: 300px;
       color: white;
-    &__group-name{
-      font-size: 15px;
-      margin-bottom: 5px;
+    .group{ 
+      a{
+        text-decoration: none;
+      }   
+      &__name{
+        font-size: 15px;
+        margin-bottom: 5px;
+        color: white;
+      }  
+      &__latest-message{
+        font-size: 11px;
+        color: white;
+      }
     }  
-    &__latest-message{
-      font-size: 11px;
-    }
   }
 }

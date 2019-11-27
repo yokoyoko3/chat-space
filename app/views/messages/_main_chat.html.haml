@@ -2,15 +2,18 @@
   .main-header
     .main-header__leftbox
       .main-header__leftbox__current-group
-        group name
+        = @group.name
       .main-header__leftbox__member-list  
-        Member
+        Menber: 
+        - @group.users.each do |user|
+          = user.name
 
     .main-header__edit-btn    
-      = link_to "#" ,class: "edit" do
+      = link_to edit_group_path(@group) ,class: "edit" do
         Edit
 
   .messages
+    = render @messages
     .message
       .message__upper-info
         .message__upper-info__talker
@@ -20,10 +23,10 @@
       .message__text
         this is a first message
   .form
-    .input-box
-      %input.input-box__text{placeholder: 'type a message',class: 'input-box__text',type: 'text',name: 'message[content]',id: 'message_content'}
-      %label{class: 'input-box__image'}
-        = icon('fas', 'image')
-        %input{type: "file",class: "file"}    
-      %input.submit-btn{type: "submit",name: "commit",value: "Send",data: "Send"}
-
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+      .form__mask
+        = f.label :image, class: 'form__mask__image' do
+          = icon('fas', 'image', class: 'icon')
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'form__submit'

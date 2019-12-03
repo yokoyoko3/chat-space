@@ -14,14 +14,7 @@
 
   .messages
     = render @messages
-    .message
-      .message__upper-info
-        .message__upper-info__talker
-          shouya
-        .message__upper-info__date
-          2019/10/08/19:14:39
-      .message__text
-        this is a first message
+
   .form
     = form_for [@group, @message] do |f|
       = f.text_field :content, class: 'form__message', placeholder: 'type a message'

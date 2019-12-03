@@ -1,12 +1,13 @@
 $(function(){
   function buildHTML(message){
-    if (message.image) {
+      let image = message.image ? `<img class="lower-message__image" src="${message.image}">`:" ";
+
       var html = `<div class="upper-message>
                     <div class="upper-message__user-name">
                       ${message.user}
                     </div>
                     <div class="upper-message__data">
-                    ${message.data}
+                    ${message.date}
                     </div>
                   </div>
                   <div class="lower-message">
@@ -15,27 +16,12 @@ $(function(){
                     </div>
                   </div>
                   <div>
-                    <img class="lower-message__image" alt="${message.image}">
+                    ${image}
                     </div>
                   </div>`
                   return html;
-    } else {
-      var html = `<div class="upper-message>
-                    <div class="upper-message__user-name">
-                      ${message.user}
-                    </div>
-                    <div class="upper-message__data">
-                    ${message.data}
-                    </div>
-                  </div>
-                  <div class="lower-message">
-                    <div class="lower-message__content">
-                      ${message.content}
-                    </div>
-                  </div>`
-                  return html;            
-    }
-  }
+    } 
+  
   $(".new_message").on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -53,7 +39,7 @@ $(function(){
       console.log(html)
       $('.messages').append(html);
       $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
-      $('.form__message').val('');
+      $('form')[0].reset();
       $('.form__submit').prop('disabled', false);
     })
     .fail(function() {

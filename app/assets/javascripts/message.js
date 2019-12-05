@@ -79,7 +79,7 @@ $(function(){
   
   if ($(location).attr('pathname') == `/groups/${group_id}/messages`){
     
-    setInterval(reloadMessages, 7000);
+    setInterval(reloadMessages, 4000);
   }
 });
 

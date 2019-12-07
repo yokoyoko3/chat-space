@@ -1,7 +1,7 @@
 $(function(){
   function buildHTML(message){
       let image = message.image ? `<img class="lower-message__image" src="${message.image}">`:" ";
-        console.log(image)
+      
       var html = `<div class="message" data-id="${message.id}">
       <div class="upper-message">
                     <div class="upper-message__user-name">
@@ -42,11 +42,14 @@ $(function(){
       $('.messages').append(html);
       $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
       $('form')[0].reset();
-      $('.form__submit').prop('disabled', false);
+      //$('.form__submit').prop('disabled', false);
     })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
-    });
+    })
+    .always(function(){
+      $('.form__submit').prop('disabled', false);
+    })
   });
 
   var reloadMessages = function() {
@@ -64,13 +67,16 @@ $(function(){
     .done(function(messages) {
       //追加するHTMLの入れ物を作る
       var insertHTML = '';
+     
       //配列messagesの中身一つ一つを取り出し、HTMLに変換したものを入れ物に足し合わせる
       $.each(messages, function(i, message) {
         insertHTML += buildHTML(message)
+        $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
       });
       //メッセージが入ったHTMLに、入れ物ごと追加
       $('.messages').append(insertHTML);
-      $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
+     
+      console.log(messages)
     })
     .fail(function() {
       alert('error');
@@ -80,7 +86,7 @@ $(function(){
   
   if ($(location).attr('pathname') == `/groups/${group_id}/messages`){
     
-    setInterval(reloadMessages, 4000);
+    setInterval(reloadMessages, 6000);
   }
 });
 

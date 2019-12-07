@@ -1,7 +1,7 @@
 $(function(){
   function buildHTML(message){
       let image = message.image ? `<img class="lower-message__image" src="${message.image}">`:" ";
-
+        console.log(image)
       var html = `<div class="message" data-id="${message.id}">
       <div class="upper-message">
                     <div class="upper-message__user-name">
@@ -24,8 +24,9 @@ $(function(){
                   return html;
     } 
   
-  $(".new_message").on('submit', function(e){
+  $("#new_message").on('submit', function(e){
     e.preventDefault();
+    console.log(this)
     var formData = new FormData(this);
     var url = $(this).attr('action');
     $.ajax({
